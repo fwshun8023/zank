@@ -39,7 +39,7 @@ module Zank
                 captcha: "HTTP/1.1"
       end
       result = JSON.parse response.body, symbolize_names: true
-      
+
       self.status = result[:status]
       if result[:status] == 1
         self.user = User.new(result[:data])
@@ -47,10 +47,26 @@ module Zank
       else
         self.error = result[:error]
       end
+
+      result[:status] == 1
     end
 
+    # /snowball/api/account/account/logout.json
+    # ?device=Android
+    # &device_id=00000000-7daf-05ab-81ec-7d6b3f4adaa4
+    # &token=947dab143272f109d131bb8e588a48e3
+    # &version=5.2.6&uid=27149761
+    # &zank_channel=selfxf
+    # &zank_id=27149761
+    # &I18N=CN 
+    # HTTP/1.1
     def logout
+      response = @conn.get do |req|                         
+        req.url LOGOUT_PATH, token: token
+      end
+      result = JSON.parse response.body, symbolize_names: true
 
+      result[:status] == 1
     end
   end
 end

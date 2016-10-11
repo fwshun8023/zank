@@ -7,14 +7,25 @@ describe 'Client' do
 
   context "Login" do
     it "login successed" do
-      @client.login
-      expect(@client.status).to eq 1
+      login = @client.login
+      expect(login).to eq true
     end
 
     it "login failed" do
       client = Zank::Client.new("x", "x")
-      client.login
-      expect(client.status).to eq 0
+      login = client.login
+      expect(login).to eq false
+    end
+  end
+
+  context "Logout" do
+    it "logout successed" do
+      @client.login
+      expect(@client.logout).to eq true
+    end
+
+    it "logout failed" do
+      expect(@client.logout).to eq false
     end
   end
 
