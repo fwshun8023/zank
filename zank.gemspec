@@ -19,9 +19,8 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ["lib"]
 
-  s.add_development_dependency "bundler", "~> 1.3"
-  s.add_development_dependency "rake", "~> 10.0"
-  s.add_development_dependency 'rspec', "~> 3.4"
-  s.add_development_dependency 'faraday', "~> 0.9.2"
-  s.add_development_dependency 'uuid', "~> 2.3.8"
+  s.add_dependency "bundler", "~> 1.3"
+  s.add_dependency "rake", "~> 10.0"
+  s.add_dependency 'faraday', "~> 0.9.2"
+  s.add_dependency 'uuid', "~> 2.3.8"
 end
