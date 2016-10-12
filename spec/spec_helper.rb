@@ -23,6 +23,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'rspec'
 require 'zank'
+require 'pry'
 
 ZANK_USERNAME = ENV['ZANK_USERNAME'] || ''
 ZANK_PASSWORD = ENV['ZANK_PASSWORD'] || ''
