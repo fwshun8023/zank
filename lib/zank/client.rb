@@ -1,20 +1,19 @@
 module Zank
   class Client
-
     attr_accessor :user, :token, :status, :error
 
     def initialize(username, password)
       @username = username
       @password = password
 
-      @conn = Faraday.new(:url => Zank::BASE_URL) do |faraday|
+      @conn = Faraday.new(url: Zank::BASE_URL) do |faraday|
         faraday.request  :url_encoded             # form-encode POST params
         faraday.response :logger                  # log requests to STDOUT
         faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
       end
     end
 
-    # password MD5后登录
+    # password MD5
     # GET /snowball/api/account/account/login.json
     # device=Android
     # &areaCode=86
@@ -28,15 +27,15 @@ module Zank
     # &I18N=CN
     # &captcha= HTTP/1.1
     def login
-      response = @conn.get do |req|                         
-        req.url LOGIN_PATH, 
-                device: 'ios', 
+      response = @conn.get do |req|
+        req.url LOGIN_PATH,
+                device: 'ios',
                 device_id: UUID.new.generate,
                 username: @username,
-                version: "5.2.6",
+                version: '5.2.6',
                 authorization: Digest::MD5.hexdigest(@password),
-                I18N: "CN",
-                captcha: "HTTP/1.1"
+                I18N: 'CN',
+                captcha: 'HTTP/1.1'
       end
       result = JSON.parse response.body, symbolize_names: true
 
@@ -58,10 +57,10 @@ module Zank
     # &version=5.2.6&uid=27149761
     # &zank_channel=selfxf
     # &zank_id=27149761
-    # &I18N=CN 
+    # &I18N=CN
     # HTTP/1.1
     def logout
-      response = @conn.get do |req|                         
+      response = @conn.get do |req|
         req.url LOGOUT_PATH, token: token
       end
       result = JSON.parse response.body, symbolize_names: true
