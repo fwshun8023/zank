@@ -13,8 +13,8 @@ module Zank
       self.timestamp     = opts[:timestamp]
       self.comment_count = opts[:commentCount]
       self.cover_url     = opts[:coverUrl]
-      self.img_small     = opts[:img_small]
-      self.img_big       = opts[:img_big]
+      self.img_small     = opts[:img_small].join(',')
+      self.img_big       = opts[:img_big].join(',')
     end
   end
 end
