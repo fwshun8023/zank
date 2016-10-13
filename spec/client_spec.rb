@@ -35,6 +35,13 @@ describe 'Client' do
     end
   end
 
+  context 'User' do 
+    it 'should be user detail' do
+      user = @client.user_detail(@client.user.uid)
+      expect(user.uid).to eq @client.user.uid
+    end
+  end
+
   context 'Logout' do
     it 'logout successed' do
       client = Zank::Client.new(ZANK_USERNAME, ZANK_PASSWORD)
