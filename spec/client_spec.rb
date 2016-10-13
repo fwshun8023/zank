@@ -28,6 +28,13 @@ describe 'Client' do
     end
   end
 
+  context 'Posts' do 
+    it 'should be Posts Array' do
+      posts = @client.posts(circle_id: 135)
+      expect(posts.class).to eq Array
+    end
+  end
+
   context 'Logout' do
     it 'logout successed' do
       client = Zank::Client.new(ZANK_USERNAME, ZANK_PASSWORD)
