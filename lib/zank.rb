@@ -14,4 +14,5 @@ module Zank
   LOGOUT_PATH  = '/snowball/api/account/account/logout.json'.freeze
   CIRCLES_PATH = '/snowball/api/circle/circle/queryMyJoinCircle.json'.freeze
   POSTS_PATH   = '/snowball/api/circle/circle/queryPostByCircleId.json'.freeze
+  USER_PATH    = '/snowball/api/user/user/getUserDetailByUid.json'.freeze
 end

@@ -92,6 +92,11 @@ module Zank
       end
     end
 
+    def user_detail(uid)
+      data = auth_response(USER_PATH, :get, uid: uid, token: token)
+      User.new(data)
+    end
+
     private
 
     def response(path, request_method = :get, params = {}, &block)
