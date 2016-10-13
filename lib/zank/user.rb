@@ -17,10 +17,10 @@ module Zank
     # "regtime"=>"1451111480",
     # "sex_type"=>"1",
     # "message_avatar"=>"http://pic.zank.mobi/avatar/5/e/5ea5d0a7ec9c203b3df3dc6e0054b603.jpg"
-    attr_accessor :uid, :username, :avatar, :vip, :follownum, :visitnum, :province, :city, :email, :phone, :age, :height, :weight, :regtime, :sex_type, :message_avatar
+    attr_accessor :id, :username, :avatar, :vip, :follownum, :visitnum, :province, :city, :email, :phone, :age, :height, :weight, :regtime, :sex_type, :message_avatar
 
     def initialize(opts)
-      self.uid            = opts[:uid]
+      self.id             = opts[:uid]
       self.username       = opts[:username]
       self.avatar         = opts[:avatar]
       self.follownum      = opts[:follownum]
