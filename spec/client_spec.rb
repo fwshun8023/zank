@@ -37,8 +37,8 @@ describe 'Client' do
 
   context 'User' do 
     it 'should be user detail' do
-      user = @client.user_detail(@client.user.uid)
-      expect(user.uid).to eq @client.user.uid
+      user = @client.user_detail(@client.user.id)
+      expect(user.id).to eq @client.user.id
     end
   end
 

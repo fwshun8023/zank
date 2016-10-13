@@ -1,11 +1,10 @@
 module Zank
   class Post
-    attr_accessor :id, :uid, :username, :city, :icon, :title, :content, :created_at, :comment_count, :cover_url, :img_small, :img_big, :timestamp
+    attr_accessor :id, :user_id, :city, :icon, :title, :content, :created_at, :comment_count, :cover_url, :img_small, :img_big, :timestamp
 
     def initialize(opts)
       self.id            = opts[:postId]
-      self.uid           = opts[:uid]
-      self.username      = opts[:username]
+      self.user_id       = opts[:uid]
       self.city          = opts[:city]
       self.icon          = opts[:icon]
       self.title         = opts[:title]
