@@ -80,23 +80,23 @@ module Zank
     end
 
     private
-      def response(path, method = :get, params = {}, &block)
-        if block
-          result = yield(@conn)
-        else
-          result = @conn.send(method){|req| req.url path, params }
-        end
-
-        JSON.parse(result.body, symbolize_names: true)
+    def response(path, _method = :get, params = {}, &block)
+      if block
+        result = yield(@conn)
+      else
+        result = @conn.send(_method){|req| req.url path, params }
       end
 
-      def auth_response(path, method = :get, params = {}, &block)
-        raise("must login") unless self.status == 1
-        result = response(path, method = :get, params, &block)
+      JSON.parse(result.body, symbolize_names: true)
+    end
 
-        raise(result.to_s) unless result[:status] == 1
-        result[:data]
-      end
+    def auth_response(path, _method = :get, params = {}, &block)
+      raise("must login") unless self.status == 1
+      result = response(path, _method = :get, params, &block)
+
+      raise(result.to_s) unless result[:status] == 1
+      result[:data]
+    end
 
 
   end
