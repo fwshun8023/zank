@@ -80,12 +80,15 @@ module Zank
     def posts(opts = {})
       raise 'must have circle_id' if opts[:circle_id].nil?
 
-      timestamp = opts[:timestamp] || (Time.now.to_f * 1000).to_i
-      data = auth_response(POSTS_PATH, :get,
-        circleId: opts[:circle_id],
-        token: token,
-        timestamp: timestamp
-      )
+      params = {circleId: opts[:circle_id], token: token}
+      if opts[:timestamp]
+        path = POSTS_PAGE_PATH
+        params[:timestamp] = opts[:timestamp]
+      else
+        path = POSTS_PATH
+      end
+
+      data = auth_response(path, :get, params)
       
       data[:post].collect do |post|
         Post.new(post)

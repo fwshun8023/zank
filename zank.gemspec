@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.date          = '2016-10-10'
   s.summary       = 'zank data'
   s.description   = 'zank data'
-  s.authors       = ['fwshun8023']
+  s.authors       = ['fwshun']
   s.email         = ['fwshun8023@gmai.com']
   s.homepage      = 'https://github.com/fwshun8023/zank'
   s.license       = 'MIT'

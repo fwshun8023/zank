@@ -29,8 +29,12 @@ describe 'Client' do
   end
 
   context 'Posts' do 
-    it 'should be Posts Array' do
+    it 'should be Posts Array without timestamp' do
       posts = @client.posts(circle_id: 135)
+      expect(posts.class).to eq Array
+    end
+    it 'should be Posts Array with timestamp' do
+      posts = @client.posts(circle_id: 135, timestamp: (Time.now.to_f * 1000).to_i)
       expect(posts.class).to eq Array
     end
   end
